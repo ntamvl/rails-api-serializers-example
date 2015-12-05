@@ -41,6 +41,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'ffaker', :git => 'https://github.com/EmmanuelOga/ffaker.git'
+  gem 'awesome_print'
 end
 
 group :development do
