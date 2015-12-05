@@ -69,6 +69,11 @@ rails g serializer post
 rails g serializer comment
 ```
 
+## Migration
+```
+rake db:migrate
+```
+
 ## Create data for test add code to file: db/seeds.rb
 ```
 100.times do |index|
@@ -90,3 +95,49 @@ Then run:
 ```
 rake db:seed
 ```
+
+## Run
+```
+rails s
+```
+Then access to see result:
+```
+http://localhost:3000/post
+http://localhost:3000/comment
+```
+
+## Testing
+#### Create fixture data for post
+Edit file spec/factories/posts.rb
+```
+FactoryGirl.define do
+  factory :post do
+    title { FFaker::Lorem.sentence }
+    body { FFaker::Lorem.paragraph }
+  end
+end
+```
+#### Create test case for post model
+Edit file spec/models/post_spec.rb
+```
+require 'rails_helper'
+require 'spec_helper'
+
+# RSpec.describe Post, type: :model do
+#   pending "add some examples to (or delete) #{__FILE__}"
+# end
+
+describe Post do
+  before { @post = FactoryGirl.build(:post) }
+
+  subject { @post }
+
+  it { should respond_to(:title) }
+  it { should respond_to(:body) }
+end
+```
+Finally run command to test model post:
+```
+rspec spec/models/post_spec.rb
+```
+
