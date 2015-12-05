@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :post do
-    title "MyString"
-body "MyText"
+    title { FFaker::Lorem.sentence }
+    body { FFaker::Lorem.paragraph }
   end
-
 end
