@@ -1,6 +1,6 @@
 class PostController < ApplicationController
   def index
-    render json: Post.take(10)
+    render json: Post.take(5)
   end
 
   def show

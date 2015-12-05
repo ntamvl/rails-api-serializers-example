@@ -1,6 +1,6 @@
 class V1::PostsController < V1::BaseController
   def index
-    render json: Post.take(10)
+    render json: Post.order(id: :desc).take(5)
   end
 
   def show
