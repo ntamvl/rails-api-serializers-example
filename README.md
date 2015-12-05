@@ -96,14 +96,37 @@ Then run:
 rake db:seed
 ```
 
+## Generate version API use gem versionist
+Please read more https://github.com/bploetz/versionist
+#### Create new api
+versionist syntax
+```
+rails g versionist:new_api_version <API version> <module namespace API> [options]
+
+```
+Create API version v1, module V1, option --path=value:v1 --default
+```
+rails g versionist:new_api_version v1 V1 --path=value:v1 --default
+```
+
+#### Create API get post list
+Expect /v1/posts, use with versionist:new_controller
+```
+rails g versionist:new_controller <name> <module namespace>
+```
+With post API, routes là /v1/posts
+```
+rails g versionist:new_controller posts V1
+```
+
 ## Run
 ```
 rails s
 ```
 Then access to see result:
 ```
-http://localhost:3000/post
-http://localhost:3000/comment
+http://localhost:3000/v1/posts
+http://localhost:3000/v1/comments
 ```
 
 ## Testing
