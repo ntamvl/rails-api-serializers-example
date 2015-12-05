@@ -129,7 +129,7 @@ http://localhost:3000/v1/posts
 http://localhost:3000/v1/comments
 ```
 
-## Testing
+## Test: post model and post api with version v1
 #### Create fixture data for post
 Edit file spec/factories/posts.rb
 ```
@@ -164,3 +164,31 @@ Finally run command to test model post:
 rspec spec/models/post_spec.rb
 ```
 
+#### Test post api v1
+- Test response code successful is 200
+- Test data
+```
+require 'rails_helper'
+require 'spec_helper'
+
+describe V1::PostsController do
+  before do
+    @post = FactoryGirl.create :post
+    get "/v1/posts", format: :json
+  end
+
+  it 'return post information' do
+    post = JSON.parse(response.body, symbolize_names: true).first
+    expect(post[:title]).to eql @post.title
+    expect(post[:body]).to eql @post.body
+  end
+
+  it 'response code' do
+    expect(response).to have_http_status(200)
+  end
+end
+```
+Then run test:
+```
+rspec spec/requests/v1/posts_controller_spec.rb
+```
