@@ -10,7 +10,26 @@ rails new . -d postgresql --api
 ## Add those gems to Gemfile
 
 ```
+gem 'active_model_serializers'
 
+gem 'rspec-rails', '~> 3.0'
+gem 'factory_girl_rails'
+gem 'shoulda-matchers'
+gem 'ffaker', :git => 'https://github.com/EmmanuelOga/ffaker.git'
+```
+
+## Then run command
+```
+bundle install
+```
+
+## Generate Rspec
+```
+rails generate rspec:install
+```
+To test run this command:
+```
+bundle exec rspec
 ```
 
 ## Generate model post
