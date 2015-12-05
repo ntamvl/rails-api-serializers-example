@@ -66,5 +66,6 @@ rails g model comment_tag comment:references tag:references
 For model post
 ```
 rails g serializer post
+rails g serializer comment
 ```
 
