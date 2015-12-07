@@ -55,7 +55,7 @@ rails g model tag name:string
 
 ### Generate model post_tag references to post and tag
 ```
-rails g model post_tag post:references tag:references
+rails g model posts_tag post:references tag:references
 ```
 ### Generate model comment_tag references to comment and tag
 ```
@@ -178,7 +178,7 @@ describe V1::PostsController do
   end
 
   it 'return post information' do
-    post = JSON.parse(response.body, symbolize_names: true).first
+    post = JSON.parse(response.body, symbolize_names: true)[:posts].first
     expect(post[:title]).to eql @post.title
     expect(post[:body]).to eql @post.body
   end
